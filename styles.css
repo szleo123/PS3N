@@ -121,7 +121,7 @@ a {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+  grid-template-columns: minmax(0, 0.92fr) minmax(520px, 1.08fr);
   align-items: center;
   gap: 48px;
   min-height: calc(100svh - 150px);
@@ -154,6 +154,10 @@ h1 {
   font-size: clamp(42px, 7vw, 82px);
   line-height: 0.98;
   letter-spacing: 0;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 h2 {

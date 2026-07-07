@@ -156,6 +156,10 @@ h1 {
   letter-spacing: 0;
 }
 
+.hero-title span {
+  display: block;
+}
+
 .nowrap {
   white-space: nowrap;
 }

@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PS3N | Event-Based Visual-Tactile Slip Detection</title>
+    <meta
+      name="description"
+      content="Academic project showcase for PS3N, an IEEE Transactions on Robotics publication by Senlin Fang, Yilin Li, and collaborators on event-based visual-tactile slip detection."
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="PS3N home">
+        <span class="brand-mark">P3</span>
+        <span>PS3N</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#method">Method</a>
+        <a href="#dataset">Dataset</a>
+        <a href="#demos">Demos</a>
+        <a href="#publication">Publication</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section-band">
+        <div class="hero-copy">
+          <p class="eyebrow">IEEE Transactions on Robotics, 2026</p>
+          <h1>PS3N for Event-Based Visual-Tactile Slip Detection</h1>
+          <p class="hero-lede">
+            A recent T-RO publication on fast, uncertainty-aware robotic slip detection using event cameras,
+            event-based tactile sensing, probabilistic spiking state-space models, and dynamic multimodal fusion.
+          </p>
+          <div class="hero-actions" aria-label="Project links">
+            <a class="button primary" href="https://doi.org/10.1109/TRO.2026.3688100" target="_blank" rel="noreferrer">
+              DOI
+            </a>
+            <a class="button" href="https://github.com/szleo123" target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="hero-media" aria-label="Slip detection demo video">
+          <video controls muted autoplay loop playsinline poster="assets/images/common-object-events.png">
+            <source src="assets/videos/slip-detection-overview.mp4" type="video/mp4">
+          </video>
+          <div class="media-caption">
+            Real robotic manipulation with event-based visual-tactile slip detection.
+          </div>
+        </div>
+      </section>
+
+      <section class="metric-row" aria-label="Project highlights">
+        <article>
+          <strong>First authors</strong>
+          <span>Senlin Fang, Yilin Li</span>
+        </article>
+        <article>
+          <strong>28x+</strong>
+          <span>Faster training than recurrent SNN baselines</span>
+        </article>
+        <article>
+          <strong>30 objects</strong>
+          <span>Common, metal, and transparent categories</span>
+        </article>
+        <article>
+          <strong>2 modalities</strong>
+          <span>Wrist event camera plus Evetac tactile sensor</span>
+        </article>
+      </section>
+
+      <section id="problem" class="section section-band">
+        <div class="section-heading">
+          <p class="eyebrow">Research problem</p>
+          <h2>Slip is fast, local, and easy to miss.</h2>
+          <p>
+            Robotic grasping needs early slip detection before an object is dropped. Event cameras and
+            event-based tactile sensors are well suited to this setting because they capture sparse,
+            high-temporal-resolution changes instead of waiting for dense video frames.
+          </p>
+        </div>
+        <div class="problem-grid">
+          <article>
+            <span class="kicker">Challenge</span>
+            <h3>Hard objects</h3>
+            <p>Transparent, reflective, and low-texture objects stress conventional visual pipelines.</p>
+          </article>
+          <article>
+            <span class="kicker">Timing</span>
+            <h3>Early response</h3>
+            <p>Slip detection must be close to the onset of motion so a controller can still react.</p>
+          </article>
+          <article>
+            <span class="kicker">Computation</span>
+            <h3>Long sequences</h3>
+            <p>Classic recurrent SNN training can be slow when event streams become long.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="method" class="section">
+        <div class="section-heading compact">
+          <p class="eyebrow">Method</p>
+          <h2>Probabilistic spiking dynamics as a structured state-space model.</h2>
+        </div>
+        <div class="method-points method-points-horizontal">
+          <article>
+            <span class="number">01</span>
+            <h3>PS3N</h3>
+            <p>
+              Reformulates probabilistic spiking dynamics into linear time-invariant state-space equations,
+              enabling a convolutional form for parallel training.
+            </p>
+          </article>
+          <article>
+            <span class="number">02</span>
+            <h3>Local decaying kernels</h3>
+            <p>
+              Preserves temporal precision while scaling efficiently over long event sequences.
+            </p>
+          </article>
+          <article>
+            <span class="number">03</span>
+            <h3>DTMF fusion</h3>
+            <p>
+              Dynamically weights visual and tactile modalities using time-varying uncertainty estimates.
+            </p>
+          </article>
+        </div>
+        <div class="method-figures">
+          <figure class="method-figure large">
+            <img src="assets/images/method-pipeline.png" alt="PS3N visual-tactile pipeline with convolutional SSM and dynamic temporal multimodal fusion">
+            <figcaption>Overall PS3N pipeline: visual and tactile event streams are encoded, modeled with convolutional SSM blocks, and fused through DTMF.</figcaption>
+          </figure>
+          <figure class="method-figure">
+            <img src="assets/images/method-psm-ssm.png" alt="Probability spiking mechanism and recurrent versus convolutional state-space formulation">
+            <figcaption>Probabilistic spiking mechanism and the conversion from recurrent to convolutional SSM computation.</figcaption>
+          </figure>
+          <figure class="method-figure">
+            <img src="assets/images/method-dtmf.png" alt="Dynamic temporal multimodal fusion module using visual and tactile confidence estimates">
+            <figcaption>Dynamic Temporal Multimodal Fusion weights visual and tactile experts according to estimated uncertainty over time.</figcaption>
+          </figure>
+        </div>
+        <div class="analysis-strip">
+          <figure class="feature-figure">
+            <img src="assets/images/event-heatmap-visualization.png" alt="Event heatmap visualization from the PS3N analysis materials">
+            <figcaption>Representative event-centered visual analysis used to inspect model behavior over slip sequences.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="dataset" class="section section-band">
+        <div class="section-heading">
+          <p class="eyebrow">EVTS dataset</p>
+          <h2>A real-world benchmark for visual-tactile slip.</h2>
+          <p>
+            EVTS synchronizes a wrist-mounted event camera and the Evetac optical tactile sensor during robotic
+            manipulation, covering diverse materials, lighting, and motion patterns.
+          </p>
+        </div>
+        <figure class="wide-figure">
+          <img src="assets/images/evts-lighting-object-grid.jpg" alt="EVTS examples showing common, transparent, and metal objects under different lighting conditions">
+          <figcaption>Objects are captured across lighting conditions and material categories, including common, transparent, and metal cases.</figcaption>
+        </figure>
+        <div class="object-grid">
+          <figure>
+            <img src="assets/images/common-object-events.png" alt="Common object with Evetac and event camera visualizations">
+            <figcaption>Common objects</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/metal-object-events.png" alt="Metal object with Evetac and event camera visualizations">
+            <figcaption>Metal objects</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/transparent-object-events.png" alt="Transparent object with Evetac and event camera visualizations">
+            <figcaption>Transparent objects</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="results" class="section two-column">
+        <div>
+          <p class="eyebrow">Results</p>
+          <h2>Efficient training, robust multimodal performance.</h2>
+        </div>
+        <div class="result-list">
+          <article>
+            <strong>Performance-efficiency tradeoff</strong>
+            <p>PS3N outperforms standard baselines across object categories and sensing modalities.</p>
+          </article>
+          <article>
+            <strong>Training speed</strong>
+            <p>The model trains more than 28 times faster than recurrent SNN-based baselines.</p>
+          </article>
+          <article>
+            <strong>Uncertainty-aware fusion</strong>
+            <p>DTMF improves multimodal recognition by letting more reliable modalities contribute more over time.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="demos" class="section section-band">
+        <div class="section-heading">
+          <p class="eyebrow">Demos</p>
+          <h2>Robotic slip and disturbance examples.</h2>
+          <p>
+            Short clips from the project materials show fast pull-out, slow-motion analysis, and external disturbances.
+          </p>
+        </div>
+        <div class="demo-grid">
+          <article class="demo-card">
+            <video controls muted autoplay loop playsinline>
+              <source src="assets/videos/fast-pull-out.mp4" type="video/mp4">
+            </video>
+            <h3>Fast pull-out</h3>
+            <p>Rapid object removal creates a high-speed slip event.</p>
+          </article>
+          <article class="demo-card">
+            <video controls muted autoplay loop playsinline>
+              <source src="assets/videos/fast-pull-out-slow.mp4" type="video/mp4">
+            </video>
+            <h3>Slow-motion pull-out</h3>
+            <p>Five-times slower playback for inspecting timing.</p>
+          </article>
+          <article class="demo-card">
+            <video controls muted autoplay loop playsinline>
+              <source src="assets/videos/foam-disturbance.mp4" type="video/mp4">
+            </video>
+            <h3>Foam disturbance</h3>
+            <p>External contact tests robustness under soft disturbance.</p>
+          </article>
+          <article class="demo-card">
+            <video controls muted autoplay loop playsinline>
+              <source src="assets/videos/paper-disturbance.mp4" type="video/mp4">
+            </video>
+            <h3>Paper disturbance</h3>
+            <p>A light disturbance case for event-based sensing behavior.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="publication" class="section publication">
+        <div class="publication-main">
+          <p class="eyebrow">Publication</p>
+          <h2>PS3N: Probabilistic Spiking Structured State-Space Networks for Event-Based Visual-Tactile Slip Detection</h2>
+          <p>
+            Senlin Fang, Yilin Li, Peng Wu, Yiru Wang, Shu Zhang, Zihan Wang, Bozhan Cao, Hoiio Kong,
+            and Zhengkun Yi. IEEE Transactions on Robotics, vol. 42, 2026.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://doi.org/10.1109/TRO.2026.3688100" target="_blank" rel="noreferrer">DOI</a>
+          </div>
+        </div>
+        <aside class="contact-panel">
+          <div class="contact-person">
+            <h3>Senlin Fang</h3>
+            <p>First author</p>
+            <a href="mailto:d22092100360@cityu.edu.mo">d22092100360@cityu.edu.mo</a>
+          </div>
+          <div class="contact-person">
+            <h3>Yilin Li</h3>
+            <p>First author</p>
+            <a href="mailto:leoliyilin0915@gmail.com">leoliyilin0915@gmail.com</a>
+            <a href="https://github.com/szleo123" target="_blank" rel="noreferrer">github.com/szleo123</a>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Academic project showcase for a T-RO publication by Senlin Fang, Yilin Li, and collaborators.</p>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

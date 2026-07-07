@@ -17,9 +17,9 @@
         <span>PS3N</span>
       </a>
       <nav class="nav" aria-label="Primary navigation">
+        <a href="#demos">Demos</a>
         <a href="#method">Method</a>
         <a href="#dataset">Dataset</a>
-        <a href="#demos">Demos</a>
         <a href="#publication">Publication</a>
       </nav>
     </header>
@@ -31,8 +31,8 @@
           <h1 class="hero-title">
             <span>PS3N for</span>
             <span>Event-Based</span>
-            <span class="nowrap">Visual&#8209;Tactile Slip</span>
-            <span>Detection</span>
+            <span class="nowrap">Visual&#8209;Tactile</span>
+            <span class="nowrap">Slip Detection</span>
           </h1>
           <p class="hero-lede">
             A recent T-RO publication on fast, uncertainty-aware robotic slip detection using event cameras,
@@ -41,9 +41,6 @@
           <div class="hero-actions" aria-label="Project links">
             <a class="button primary" href="https://doi.org/10.1109/TRO.2026.3688100" target="_blank" rel="noreferrer">
               DOI
-            </a>
-            <a class="button" href="https://github.com/szleo123" target="_blank" rel="noreferrer">
-              GitHub
             </a>
           </div>
         </div>
@@ -59,10 +56,6 @@
 
       <section class="metric-row" aria-label="Project highlights">
         <article>
-          <strong>First authors</strong>
-          <span>Senlin Fang, Yilin Li</span>
-        </article>
-        <article>
           <strong>28x+</strong>
           <span>Faster training than recurrent SNN baselines</span>
         </article>
@@ -74,6 +67,85 @@
           <strong>2 modalities</strong>
           <span>Wrist event camera plus Evetac tactile sensor</span>
         </article>
+      </section>
+
+      <section id="demos" class="section section-band sensor-demo">
+        <div class="section-heading">
+          <p class="eyebrow">Demos</p>
+          <h2>Why event-based tactile sensing matters.</h2>
+          <p>
+            The disturbance clips make the sensing problem concrete: slip and contact changes can happen faster
+            than frame-based tactile cameras can comfortably capture. Evetac keeps the same spatial resolution as
+            GelSight Mini while providing much higher temporal resolution, lower latency, and far smaller data output.
+          </p>
+        </div>
+        <div class="comparison-layout">
+          <div class="comparison-copy">
+            <h3>Evetac versus GelSight Mini</h3>
+            <p>
+              Both sensors provide 640 x 480 spatial resolution. The important difference is timing: Evetac is
+              event-based, so it reports sparse changes at over 1000 Hz with sub-millisecond latency, while the
+              RGB-camera-based GelSight Mini operates at video-frame rates.
+            </p>
+          </div>
+          <div class="sensor-table" role="table" aria-label="Evetac and GelSight Mini comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Parameter</div>
+              <div role="columnheader">Evetac</div>
+              <div role="columnheader">GelSight Mini</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Spatial resolution</div>
+              <div role="cell">640 x 480 px</div>
+              <div role="cell">640 x 480 px</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Temporal resolution</div>
+              <div role="cell" class="emphasis">&gt;1000 Hz</div>
+              <div role="cell">25 Hz</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Latency</div>
+              <div role="cell" class="emphasis">&lt;1 ms</div>
+              <div role="cell">50-100 ms</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Average output data</div>
+              <div role="cell" class="emphasis">6 kbytes</div>
+              <div role="cell">780 kbytes</div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-grid">
+          <article class="demo-card">
+            <video controls muted autoplay loop playsinline>
+              <source src="assets/videos/fast-pull-out.mp4" type="video/mp4">
+            </video>
+            <h3>Fast pull-out</h3>
+            <p>Rapid object removal creates a high-speed slip event.</p>
+          </article>
+          <article class="demo-card">
+            <video controls muted autoplay loop playsinline>
+              <source src="assets/videos/fast-pull-out-slow.mp4" type="video/mp4">
+            </video>
+            <h3>Slow-motion pull-out</h3>
+            <p>Five-times slower playback for inspecting timing.</p>
+          </article>
+          <article class="demo-card">
+            <video controls muted autoplay loop playsinline>
+              <source src="assets/videos/foam-disturbance.mp4" type="video/mp4">
+            </video>
+            <h3>Foam disturbance</h3>
+            <p>External contact tests robustness under soft disturbance.</p>
+          </article>
+          <article class="demo-card">
+            <video controls muted autoplay loop playsinline>
+              <source src="assets/videos/paper-disturbance.mp4" type="video/mp4">
+            </video>
+            <h3>Paper disturbance</h3>
+            <p>A light disturbance case for event-based sensing behavior.</p>
+          </article>
+        </div>
       </section>
 
       <section id="problem" class="section section-band">
@@ -202,46 +274,6 @@
           <article>
             <strong>Uncertainty-aware fusion</strong>
             <p>DTMF improves multimodal recognition by letting more reliable modalities contribute more over time.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="demos" class="section section-band">
-        <div class="section-heading">
-          <p class="eyebrow">Demos</p>
-          <h2>Robotic slip and disturbance examples.</h2>
-          <p>
-            Short clips from the project materials show fast pull-out, slow-motion analysis, and external disturbances.
-          </p>
-        </div>
-        <div class="demo-grid">
-          <article class="demo-card">
-            <video controls muted autoplay loop playsinline>
-              <source src="assets/videos/fast-pull-out.mp4" type="video/mp4">
-            </video>
-            <h3>Fast pull-out</h3>
-            <p>Rapid object removal creates a high-speed slip event.</p>
-          </article>
-          <article class="demo-card">
-            <video controls muted autoplay loop playsinline>
-              <source src="assets/videos/fast-pull-out-slow.mp4" type="video/mp4">
-            </video>
-            <h3>Slow-motion pull-out</h3>
-            <p>Five-times slower playback for inspecting timing.</p>
-          </article>
-          <article class="demo-card">
-            <video controls muted autoplay loop playsinline>
-              <source src="assets/videos/foam-disturbance.mp4" type="video/mp4">
-            </video>
-            <h3>Foam disturbance</h3>
-            <p>External contact tests robustness under soft disturbance.</p>
-          </article>
-          <article class="demo-card">
-            <video controls muted autoplay loop playsinline>
-              <source src="assets/videos/paper-disturbance.mp4" type="video/mp4">
-            </video>
-            <h3>Paper disturbance</h3>
-            <p>A light disturbance case for event-based sensing behavior.</p>
           </article>
         </div>
       </section>

@@ -16,10 +16,13 @@
 
 * {
   box-sizing: border-box;
+  min-width: 0;
 }
 
 html {
   scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -106,7 +109,7 @@ a {
 }
 
 .section {
-  padding: 72px 0;
+  padding: 66px 0;
 }
 
 .section-band {
@@ -448,6 +451,7 @@ figcaption {
   grid-template-columns: minmax(0, 1fr) 320px;
   gap: 34px;
   align-items: start;
+  padding-bottom: 36px;
 }
 
 .publication-main {
@@ -490,7 +494,7 @@ figcaption {
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  padding: 34px 0 48px;
+  padding: 24px 0 28px;
   color: var(--muted);
   border-top: 1px solid var(--line);
 }
